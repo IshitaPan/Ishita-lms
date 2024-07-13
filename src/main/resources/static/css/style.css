@@ -1,0 +1,28 @@
+body{
+    background: rgb(110, 38, 14)!important;
+}
+.bg-primary{
+    background:#6E260E!important;
+}
+.banner{
+    width: 100%;
+    height: 93vh;
+    background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),url(../img/c2.jpg);
+    background-size: cover;
+    
+}
+.my-card{
+    padding: 50px;
+    background: #000000;
+    margin-right: 10px;
+    margin-left: 210px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+.reg{
+    color:#1B4771!important;
+}
+.required-field::after {
+    content: "*";
+    color: red;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlnx:th="http://www.thymelaef.org" xmlns:xmlnx="http://www.w3.org/1999/xhtml"
+th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>This is home page</title>
+</head>
+<body>
+ <section class="normal d-flex justify-content-center align-items-center">
+    <div class="text-center">
+      <form   action="" th:action="@{/list-of-book-by-title}" method="get" th:object="${book}">
+        <div class="form-group" >
+            
+            <input type="text" name="btitle" th:value="${book.btitle}" class="form-control" 
+            id="btitle_field" aria-describedby="nameHelp" placeholder="Search by title" required >
+            <button type="submit"  style="background-color: #1B4771" class="btn btn-primary">SEARCH</button>
+    
+        </div>
+        
+          
+      </form>
+        <h1 class="font-weight-bold text-white">List of Book</h1>
+            <div class="card mr-3 ml-3">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">ISBN</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Publication Year</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr th:each="b : ${books}">
+                            <th scope="row" th:text = "${b.bid}">1</th>
+                            <td th:text = "${b.btitle}">Mark Jugaerbarg</td>
+                            <td th:text = "${b.author}">Otto</td>
+                            <td th:text = "${b.isbn}">@mdo</td>
+                            <td th:text = "${b.genre}">Mark</td>
+                            <td th:text = "${b.pub_year}">Otto</td>
+                            <td>
+                                <a th:href="@{'/delete/'+${b.bid}}" class="btn btn-danger" type="submit">DELETE</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+
+    </div>
+
+</section>
+</body>
+</html>
