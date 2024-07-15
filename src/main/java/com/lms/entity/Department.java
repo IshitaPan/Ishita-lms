@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="DEPARTMENT")
@@ -12,6 +13,7 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotBlank(message = "Department cannot be blank")
     private String name;
 
     // @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)

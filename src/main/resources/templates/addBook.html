@@ -15,7 +15,7 @@
                         <th:block th:text="${@sessionHelper.removeMessageFromsession()}"></th:block>                        
                     </div>
                     <h1 class="text-center reg">Add New Book</h1>
-                    <form  novalidate action="" th:action="@{/save_book}" method="post" th:object="${book}">
+                    <form  novalidate action="" th:action="@{/save_book}" method="post" th:object="${book}" >
                         <div class="form-group" >
                             <label for="btitle_field" >Title<span class="required-field"></span></label>
                             <input type="text" name="btitle" th:value="${book.btitle}" class="form-control" 
@@ -55,13 +55,17 @@
                         </div>
                         <div class="form-group">
                             <label for="department_field" >Department<span class="required-field"></span></label>
-                            <input type="text" name="department.name"  th:value="${book.department}" class="form-control" 
-                            id="department_field" placeholder="Enter Department" required>
+                            <select th:field ="*{department}"  name="book.department" class = "form-control" required>
+                                <th:block th:each  = "dep : ${departments}">
+                                    <option  th:text = "${dep.name}" th:value = "${dep.id}" id="department_field"/> 
+                                </th:block>
+                            </select>
+                           
                         </div>
                         <label> </label>
                         <div class="container-text-center">
-                                <button type="submit"  style="background-color: #1B4771" class="btn btn-primary">Add book</button>
-                                <button type="reset"  style="background-color: #256FB6" class="btn btn-info">Reset</button>
+                                <button type="submit"  style="background-color: #7e600e" class="btn btn-primary">Add book</button>
+                                <button type="reset"  style="background-color: #7e600e" class="btn btn-info">Reset</button>
                         </div>
                     </form>
                     

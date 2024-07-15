@@ -8,12 +8,12 @@ th:replace="base::layout(~{::section})">
 <body>
  <section class="normal d-flex justify-content-center align-items-center">
     <div class="text-center">
-      <form   action="" th:action="@{/list-of-book-by-title}" method="get" th:object="${book}">
+      <form   action="" th:action="@{/search-list-of-book-by-title}" method="get" th:object="${book}">
         <div class="form-group" >
             
             <input type="text" name="btitle" th:value="${book.btitle}" class="form-control" 
             id="btitle_field" aria-describedby="nameHelp" placeholder="Search by title" required >
-            <button type="submit"  style="background-color: #1B4771" class="btn btn-primary">SEARCH</button>
+            <button type="submit"  style="background-color: #7e600e" class="btn btn-primary">SEARCH</button>
     
         </div>
         

@@ -13,13 +13,13 @@ public class HomeController {
    
     @RequestMapping ("/")
     public String home(Model model) {
-        model.addAttribute("title", "Home- Smart Contact");
+        model.addAttribute("title", "Home- LMS");
         return "home";
     }
     
     @RequestMapping ("/signup")
     public String signup(Model model) {
-        model.addAttribute("title", "Register- Smart Contact");
+        model.addAttribute("title", "Register- LMS");
         model.addAttribute("user", new User());
         return "register";
     }

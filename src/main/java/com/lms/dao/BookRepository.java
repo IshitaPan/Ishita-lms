@@ -11,7 +11,7 @@ import com.lms.entity.Book;
 public interface BookRepository extends JpaRepository<Book, Long> {
     public boolean existsByIsbn(String isbn);
     
-     @Query(value="select * from book  where btitle=:btitle",nativeQuery  =true)
+     @Query(value="SELECT * FROM book WHERE btitle LIKE %:btitle%",nativeQuery  =true)
      public List<Book> getBookByTitle(@Param("btitle") String btitle);
 
      @Query(value="select * from book  where author=:author",nativeQuery  =true)

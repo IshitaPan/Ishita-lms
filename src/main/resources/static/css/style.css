@@ -1,5 +1,5 @@
 body{
-    background: rgb(110, 38, 14)!important;
+    background: rgb(184, 118, 97)!important;
 }
 .bg-primary{
     background:#6E260E!important;
@@ -20,7 +20,7 @@ body{
     color: #ffffff;
 }
 .reg{
-    color:#1B4771!important;
+    color:#7e600e!important;
 }
 .required-field::after {
     content: "*";

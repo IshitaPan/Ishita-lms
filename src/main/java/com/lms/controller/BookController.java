@@ -32,21 +32,23 @@ public class BookController {
 
 @RequestMapping ("/add-book")
     public String add_book(Model model) {
-        model.addAttribute("title", "AddBook - Smart Contact");
+        model.addAttribute("title", "AddBook - LMS");
+        List<Department> departments = departmentRepository.findAll();
         model.addAttribute("book", new Book());
+        model.addAttribute("departments", departments);
         return "addBook";
     }
     @RequestMapping ("/list-of-book")
     public String book_list(Model model,@ModelAttribute("book") Book book) {
-            model.addAttribute("title", "List - Smart Contact");
+            model.addAttribute("title", "List - LMS");
             List<Book> books = this.bookRepository.findAll();
             model.addAttribute("books", books);
             return "bookList";
         
     }
-    @RequestMapping ("/list-of-book-by-title")
-    public String book_list_by_title(Model model,@ModelAttribute("book") Book book,@RequestParam("btitle") String btitle) {
-            model.addAttribute("title", "List - Smart Contact");
+    @RequestMapping ("/search-list-of-book-by-title")
+    public String search_book_list_by_title(Model model,@ModelAttribute("book") Book book,@RequestParam("btitle") String btitle) {
+            model.addAttribute("title", "List - LMS");
             List<Book> books =  this.bookRepository.getBookByTitle(book.getBtitle());
             model.addAttribute("books", books);
             return "bookList";
@@ -66,6 +68,7 @@ public class BookController {
     @RequestMapping(value = "/save_book",method = RequestMethod.POST)
     public String saveBook(@Valid @ModelAttribute("book") Book book,@ModelAttribute("department") Department department, BindingResult res, Model model,HttpSession session)  {
 
+        List<Department> departments = departmentRepository.findAll();
         try{
             if(res.hasErrors()){
                 model.addAttribute("book", book);
@@ -73,6 +76,7 @@ public class BookController {
             }
            book.setAvailability(true);
             if(bookRepository.existsByIsbn(book.getIsbn())==true){
+                model.addAttribute("departments", departments);
                 throw new Exception("Book is alreday registered!");
             }
           
@@ -81,9 +85,8 @@ public class BookController {
                 book.setDepartment(existDept);
             }
            Book result = this.bookRepository.save(book);
-          // Department department=this.departmentRepository.save(dept);
            model.addAttribute("book", new Book());
-
+           model.addAttribute("departments", departments);
            session.setAttribute("message", new Message("Successfullly Saved!!","alert-success"));
            return "addBook";
         }catch(Exception e){
