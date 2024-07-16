@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lms.dao.BookRepository;
 import com.lms.dao.DepartmentRepository;
@@ -47,13 +46,12 @@ public class BookController {
         
     }
     @RequestMapping ("/search-list-of-book-by-title")
-    public String search_book_list_by_title(Model model,@ModelAttribute("book") Book book,@RequestParam("btitle") String btitle) {
+    public String search_book_list_by_title(Model model,@ModelAttribute("book") Book book) {
             model.addAttribute("title", "List - LMS");
             List<Book> books =  this.bookRepository.getBookByTitle(book.getBtitle());
             model.addAttribute("books", books);
             return "bookList";
-        
-        
+   
     }
     @GetMapping("/delete/{bid}")
     public String delete_book(@PathVariable Long bid,Model model,HttpSession httpSession) {

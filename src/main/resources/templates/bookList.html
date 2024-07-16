@@ -10,14 +10,10 @@ th:replace="base::layout(~{::section})">
     <div class="text-center">
       <form   action="" th:action="@{/search-list-of-book-by-title}" method="get" th:object="${book}">
         <div class="form-group" >
-            
             <input type="text" name="btitle" th:value="${book.btitle}" class="form-control" 
-            id="btitle_field" aria-describedby="nameHelp" placeholder="Search by title" required >
-            <button type="submit"  style="background-color: #7e600e" class="btn btn-primary">SEARCH</button>
-    
+            id="btitle_field" aria-describedby="nameHelp" placeholder="Search by title " required >
         </div>
-        
-          
+        <button type="submit"  style="background-color: #7e600e" class="btn btn-primary">SEARCH</button>
       </form>
         <h1 class="font-weight-bold text-white">List of Book</h1>
             <div class="card mr-3 ml-3">

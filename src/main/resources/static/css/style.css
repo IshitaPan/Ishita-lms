@@ -1,5 +1,5 @@
 body{
-    background: rgb(184, 118, 97)!important;
+    background: rgb(105, 57, 43)!important;
 }
 .bg-primary{
     background:#6E260E!important;
@@ -11,13 +11,18 @@ body{
     background-size: cover;
     
 }
+.menubar{
+    padding-left: 860px;
+}
 .my-card{
-    padding: 50px;
+    padding: 10px;
     background: #000000;
-    margin-right: 10px;
-    margin-left: 210px;
+    margin-left: 200px;
     margin-bottom: 20px;
     color: #ffffff;
+}
+.dropbutton{
+    margin-top: 10px;
 }
 .reg{
     color:#7e600e!important;

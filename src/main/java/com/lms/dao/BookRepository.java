@@ -14,6 +14,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
      @Query(value="SELECT * FROM book WHERE btitle LIKE %:btitle%",nativeQuery  =true)
      public List<Book> getBookByTitle(@Param("btitle") String btitle);
 
+    //  @Query(value="SELECT * FROM book WHERE btitle LIKE %:btitle% OR btitle LIKE %:author% ",nativeQuery  =true)
+    //  public List<Book> getBookByTitle(@Param("btitle") String btitle,@Param("author") String author);
+
      @Query(value="select * from book  where author=:author",nativeQuery  =true)
      public List<Book> getBookByAuthor(@Param("author") String author);
     
